@@ -529,7 +529,8 @@ class Auth_OpenID {
     {
         $args = func_get_args();
         $message = call_user_func_array('sprintf', $args);
-        error_log($message);
+        //error_log($message);
+        WSLog::get()->debug($message);
     }
 
     static function autoSubmitHTML($form, $title="OpenId transaction in progress")
