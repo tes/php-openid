@@ -314,7 +314,7 @@ function detect_stores($r, &$out)
 
     $found = array();
     foreach (array('sqlite', 'mysql', 'pgsql') as $dbext) {
-        if (extension_loaded($dbext) || (ini_get('enable_dl') && dl($dbext . '.' . PHP_SHLIB_SUFFIX))) {
+        if (extension_loaded($dbext) || (function_exists('dl') && @dl($dbext . '.' . PHP_SHLIB_SUFFIX))) {
             $found[] = $dbext;
         }
     }
@@ -368,7 +368,7 @@ function detect_stores($r, &$out)
 
     $out .= $r->p('If you are using the filesystem store, your ' .
                   'data directory must be readable and writable by ' .
-                  $web_user . ' and not availabe over the Web.');
+                  $web_user . ' and not available over the Web.');
     return true;
 }
 
@@ -434,7 +434,7 @@ function detect_fetcher($r, &$out)
 
     $ok = true;
     $fetcher = Auth_Yadis_Yadis::getHTTPFetcher();
-    $fetch_url = 'http://gist.github.com/raw/465630/c57eff55ebc0c54973903af5f72bac72762cf4f4/helloworld';
+    $fetch_url = 'https://raw.github.com/gist/465630/c57eff55ebc0c54973903af5f72bac72762cf4f4/helloworld';
     $expected_url = $fetch_url;// . '.txt';
     $result = $fetcher->get($fetch_url);
 
@@ -455,7 +455,7 @@ function detect_fetcher($r, &$out)
             if ($url == $fetch_url) {
                 $msg = 'The redirected URL was not returned.';
             } else {
-                $msg = 'An unexpected URL was returned: <' . $url . '>.';
+                $msg = 'An unexpected URL was returned: ' . $url . '.';
             }
             $parts[] = $r->b($msg);
         }
