@@ -751,7 +751,7 @@ class Tests_Auth_OpenID_StoreTest extends PHPUnit_Framework_TestSuite {
         return "Tests_Auth_OpenID_StoreTest";
     }
 
-      function Tests_Auth_OpenID_StoreTest()
+      function __construct()
     {
         $this->addTestSuite('Tests_Auth_OpenID_Included_StoreTest');
         $this->addTestSuite('Tests_Auth_OpenID_MemcachedStore_Test');

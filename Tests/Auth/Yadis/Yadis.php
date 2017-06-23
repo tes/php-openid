@@ -9,7 +9,7 @@ require_once 'Tests/Auth/Yadis/TestUtil.php';
 
 class Tests_Auth_Yadis_DiscoveryTest extends PHPUnit_Framework_TestCase {
 
-    function Tests_Auth_Yadis_DiscoveryTest($input_url, $redir_uri,
+    function __construct($input_url, $redir_uri,
                                                 $xrds_uri, $num)
     {
         $this->input_url = $input_url;
@@ -68,7 +68,7 @@ class Tests_Auth_Yadis_Yadis extends PHPUnit_Framework_TestSuite {
         return $tests;
     }
 
-    function Tests_Auth_Yadis_Yadis()
+    function __construct()
     {
         $test_data = file_get_contents('http://www.openidenabled.com/resources/yadis-test/discover/manifest.txt');
 
